@@ -1,12 +1,12 @@
 CC=gcc
 SRC=src
 BIN=bin
-LIBS=-lncursesw -lm
+LIBS=-lcurses -lm
 RM=rm -f
  
 .PHONY: all clean
 
-all: $(BIN)/books
+all: $(BIN) $(BIN)/books
 
 clean:
 	$(RM) $(BIN)/books $(SRC)/books.o
@@ -19,3 +19,9 @@ $(BIN)/books: $(SRC)/books.o
 
 .c.o:
 	$(CC) -c -o $@ $<
+
+
+$(BIN):
+	@echo "Folder $(directory) does not exist"
+	mkdir -p $@
+
